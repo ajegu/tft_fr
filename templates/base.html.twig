@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+<div class="container text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <h3 class="masthead-brand">TFT Practices</h3>
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link active" href="{{ url('app_index') }}">Home</a>
+                    <a class="nav-link" href="{{ url('admin_index') }}">Admin</a>
+                    <a class="nav-link" href="{{ url('app_login') }}">Login</a>
+                </nav>
+            </div>
+        </header>
+
+        <main role="main" class="inner cover">
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer class="mastfoot mt-auto">
+            <div class="inner">
+                <p>TFTPRACTICE.COM isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games
+                    or anyone officially involved in producing or managing League of Legends. League of Legends and Riot
+                    Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games,
+                    Inc.</p>
+            </div>
+        </footer>
+    </div>
+</div>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
 </html>
