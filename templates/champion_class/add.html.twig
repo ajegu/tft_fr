@@ -1,0 +1,25 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+
+    <h4>Ajouter une classe</h4>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.icon) }}
+    {{ form_row(form.synergy.description) }}
+
+    <h3>Synergies</h3>
+    <div class="requirements"  data-prototype="{{ form_widget(form.synergy.requirements.vars.prototype)|e('html_attr') }}">
+        {% for requirement in form.synergy.requirements %}
+            {{ form_row(requirement) }}
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        <i class="fa fa-save" aria-hidden="true"></i> Valider
+    </button>
+    {{ form_end(form) }}
+
+{% endblock %}
